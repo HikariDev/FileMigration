@@ -1,9 +1,9 @@
 package com.akroll.filemigration;
 
 /**
- * A JSON object for Migration Jobs.
- * Author: Andrew Kroll
- * Created: 2022-11-18
+ * A JSON object for Migration Jobs.<p>
+ * Author: Andrew Kroll<p>
+ * Created: 2022-11-18<p>
  * Edited: 2022-11-18
  */
 public class MigrationJob {

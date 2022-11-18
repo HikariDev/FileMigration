@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- * Handler class for Migration Jobs.
- * Author: Andrew Kroll
- * Created: 2022-11-18
+ * Handler class for Migration Jobs.<p>
+ * Author: Andrew Kroll<p>
+ * Created: 2022-11-18<p>
  * Updated: 2022-11-18
  */
 public class MigrationHandler {
@@ -127,7 +127,7 @@ public class MigrationHandler {
 	}
 	
 	/**
-	 * Checks for file conflicts in the destination directory.
+	 * Checks for file conflicts in the destination directory.<p>
 	 * Files which would conflict, but are newer than the destination, will pass this check.
 	 *
 	 * @param file the path to the file relative to the source directory
@@ -148,7 +148,7 @@ public class MigrationHandler {
 	}
 	
 	/**
-	 * Migrates a file from the source directory to the destination directory.
+	 * Migrates a file from the source directory to the destination directory.<p>
 	 * Removes the conflicting file one exists.
 	 *
 	 * @param file the file to move

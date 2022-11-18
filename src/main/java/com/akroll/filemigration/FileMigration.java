@@ -9,11 +9,11 @@ import java.net.URL;
 import java.util.Arrays;
 
 /**
- * Main class for the FileMigration application.
- * This application is intended for frequent migration of files from an indefinite number of source and destination directory pairs.
- * Author: Andrew Kroll
- * Created: 2022-11-18
- * Updated: 2022-11-18
+ * Main class for the FileMigration application.<p>
+ * This application is intended for frequent migration of files from an indefinite number of source and destination directory pairs.<p>
+ * Author: Andrew Kroll<p>
+ * Created: 2022-11-18<p>
+ * Updated: 2022-11-18<p>
  * https://github.com/HikariDev/FileMigration
  */
 public class FileMigration {
@@ -42,14 +42,14 @@ public class FileMigration {
 	/**
 	 * Main application function.
 	 * <p>
-	 * Valid Arguments:
-	 * -h					--help						Displays application help.
-	 * -r 				--recursive				Enable recursive file discovery and migration.
-	 * -v 				--verbose					Enable verbose logging output.
-	 * -c [file]	--config [file]		Use the specified config file. Defaults to MigrationConfig.json.
+	 * Valid Arguments:<p>
+	 * -h					--help						Displays application help.<p>
+	 * -r 				--recursive				Enable recursive file discovery and migration.<p>
+	 * -v 				--verbose					Enable verbose logging output.<p>
+	 * -c [file]	--config [file]		Use the specified config file. Defaults to MigrationConfig.json.<p>
 	 * -l [file]  --log [file]      Use the specified log file. Defaults to Migration.log.
 	 *
-	 * @param args Unused
+	 * @param args the command line arguments.
 	 */
 	public static void main(String[] args) {
 		// Handle CLI Arguments

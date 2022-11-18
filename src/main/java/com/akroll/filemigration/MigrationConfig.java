@@ -1,9 +1,9 @@
 package com.akroll.filemigration;
 
 /**
- * JSON Data class for the Migration Configuration file.
- * Author: Andrew Kroll
- * Created: 2022-11-18
+ * JSON Data class for the Migration Configuration file.<p>
+ * Author: Andrew Kroll<p>
+ * Created: 2022-11-18<p>
  * Updated: 2022-11-18
  */
 public class MigrationConfig {

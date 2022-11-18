@@ -7,9 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Logging handler class for the FileMigration application.
- * Author: Andrew Kroll
- * Created: 2022-11-18
+ * Logging handler class for the FileMigration application.<p>
+ * Author: Andrew Kroll<p>
+ * Created: 2022-11-18<p>
  * Updated: 2022-11-18
  */
 public class Logger {
@@ -25,7 +25,7 @@ public class Logger {
 	private final BufferedWriter writer;
 	
 	/**
-	 * Creates a new instance of the Logger class.
+	 * Creates a new instance of the Logger class.<p>
 	 * Creates a new BufferedWriter and Migration.log file.
 	 * <p>
 	 * Destroys the current instance and throws a RuntimeException upon failure.
@@ -40,7 +40,7 @@ public class Logger {
 	}
 	
 	/**
-	 * Creates a new Logger instance if one does not exist.
+	 * Creates a new Logger instance if one does not exist.<p>
 	 * Returns the Logger instance.
 	 *
 	 * @return the active Logger instance
@@ -65,7 +65,7 @@ public class Logger {
 	}
 	
 	/**
-	 * Appends an ISO-8601 timestamped message to the Migration.log file.
+	 * Appends an ISO-8601 timestamped message to the Migration.log file.<p>
 	 * Writes the message to stdout.
 	 *
 	 * @param message the message to be written.
