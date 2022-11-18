@@ -33,7 +33,7 @@ public class Logger {
 	 */
 	private Logger() {
 		try {
-			writer = new BufferedWriter(new FileWriter(new File("Migration.log")));
+			writer = new BufferedWriter(new FileWriter(new File("Migration.log"), true));
 		} catch (IOException e) {
 			instance = null;
 			throw new RuntimeException(e);
