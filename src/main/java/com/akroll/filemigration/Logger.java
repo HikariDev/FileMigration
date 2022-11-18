@@ -1,7 +1,6 @@
 package com.akroll.filemigration;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -33,7 +32,7 @@ public class Logger {
 	 */
 	private Logger() {
 		try {
-			writer = new BufferedWriter(new FileWriter(new File("Migration.log"), true));
+			writer = new BufferedWriter(new FileWriter(FileMigration.getLogFile(), true));
 		} catch (IOException e) {
 			instance = null;
 			throw new RuntimeException(e);
