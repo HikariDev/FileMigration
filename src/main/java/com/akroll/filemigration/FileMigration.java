@@ -43,10 +43,11 @@ public class FileMigration {
 	 * Main application function.
 	 * <p>
 	 * Valid Arguments:
-	 * -r 				--recursive				Enable recursive file migration
-	 * -v 				--verbose					Enable verbose logging output
-	 * -c [file]	--config [file]		Use the specified config file, rather than MigrationConfig.json
-	 * -l [file]  --log [file]      Use the specified log file, rather than
+	 * -h					--help						Displays application help.
+	 * -r 				--recursive				Enable recursive file discovery and migration.
+	 * -v 				--verbose					Enable verbose logging output.
+	 * -c [file]	--config [file]		Use the specified config file. Defaults to MigrationConfig.json.
+	 * -l [file]  --log [file]      Use the specified log file. Defaults to Migration.log.
 	 *
 	 * @param args Unused
 	 */
@@ -54,6 +55,20 @@ public class FileMigration {
 		// Handle CLI Arguments
 		for (int i = 0; i < args.length; i++) {
 			String arg = args[i];
+			if (arg.matches("-\\w*h\\w*") || arg.equalsIgnoreCase("--help")) {
+				Logger.getInstance().write("""
+											File Migration
+													Author: Andrew Kroll
+													Created: 2022-11-18
+													
+											Command Line Arguments:
+													-h					--help						Displays this help prompt.
+													-r					--recursive				Enables recursive file discovery and migration.
+													-v					--verbose					Enables verbose logging output.
+													-c [file]		--config [file]		Uses the specified config file. Defaults to MigrationConfig.json.
+													-l [file]   --log [file]			Uses the specified log file. Defaults to Migration.log.
+							""");
+			}
 			if (arg.matches("-\\w*r\\w*") || arg.equalsIgnoreCase("--recursive")) {
 				recursive = true;
 			}

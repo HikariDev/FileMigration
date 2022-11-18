@@ -4,12 +4,13 @@ This utility was written to allow easy migration of files both locally and acros
 
 ## Command Line Arguments
 
-| Short     | Long            | Purpose                                         |
-|-----------|-----------------|-------------------------------------------------|
-| -r        | --recursive     | Enables recursive file discovery and migration. |
-| -v        | --verbose       | Enables verbose logging output.                 |
-| -c [file] | --config [file] | Specifies a custom configuration file path      |
-| -l [file] | --log [file]    | Specifies a custom log file path                |
+| Short     | Long            | Purpose                                                     |
+|-----------|-----------------|-------------------------------------------------------------|
+| -h        | --help          | Displays the application help prompt.                       |
+| -r        | --recursive     | Enables recursive file discovery and migration.             |
+| -v        | --verbose       | Enables verbose logging output.                             |
+| -c [file] | --config [file] | Specify a custom config path. Default: MigrationConfig.json |
+| -l [file] | --log [file]    | Specify a custom log file path. Default: Migration.log      |
 
 ### Requires Java 16 or newer.
 
