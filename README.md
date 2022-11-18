@@ -4,7 +4,5 @@ This utility was written to allow easy migration of files both locally and acros
 
 Requires Java 16 or newer.
 
-Author: Andrew Kroll
+Author: Andrew Kroll \
 Created: 2022-11-18
-Updated: 2022-11-18
-Latest Release: 1.0.1
