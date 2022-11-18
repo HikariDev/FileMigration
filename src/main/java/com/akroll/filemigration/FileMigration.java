@@ -26,7 +26,7 @@ public class FileMigration {
 	public static void main(String[] args) {
 		// Save default config if missing
 		if (!new File("MigrationConfig.json").exists()) {
-			URL inputUrl = FileMigration.class.getResource(File.separator + "MigrationConfig.json");
+			URL inputUrl = FileMigration.class.getResource("/MigrationConfig.json");
 			File dest = new File("MigrationConfig.json");
 			try {
 				FileUtils.copyURLToFile(inputUrl, dest);

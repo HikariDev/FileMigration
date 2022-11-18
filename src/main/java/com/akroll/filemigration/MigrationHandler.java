@@ -123,11 +123,15 @@ public class MigrationHandler {
 	 * @param file the file to move
 	 */
 	public void migrate(File file) {
-		String destination = job.to + file.getAbsolutePath().substring(job.from.length());
-		if (new File(destination).exists()) {
+		File destination = new File(job.to + file.getAbsolutePath().substring(job.from.length()));
+		if (destination.exists()) {
 			Logger.getInstance().write(String.format("Removing existing file: %s", destination));
+			destination.delete();
+		}
+		else {
+			destination.getParentFile().mkdirs();
 		}
 		Logger.getInstance().write(String.format("Migrating: %s -> %s", file.getAbsolutePath(), destination));
-		file.renameTo(new File(destination));
+		file.renameTo(destination);
 	}
 }
