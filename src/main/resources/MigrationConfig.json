@@ -1,14 +1,16 @@
 {
   "jobs": [
     {
+      "title": "Example Job",
       "from": "C:\\From Path\\",
       "to": "C:\\To Path\\",
       "filters": [
-        "*.txt",
-        "*.log"
+        ".*.txt",
+        ".*.log"
       ]
     },
     {
+      "title": "Second Example",
       "from": "C:\\Source\\",
       "to": "C:\\Destination\\",
       "filters": [

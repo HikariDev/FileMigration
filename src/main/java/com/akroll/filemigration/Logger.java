@@ -4,7 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Instant;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Logging handler class for the FileMigration application.
@@ -72,8 +73,9 @@ public class Logger {
 	 */
 	public void write(String message) {
 		try {
-			System.out.println(String.format("%s >> %s\n", Instant.now().toString(), message));
-			writer.write(String.format("%s >> %s\n", Instant.now().toString(), message));
+			String dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+			System.out.printf("%s >> %s\n", dateTime, message);
+			writer.write(String.format("%s >> %s\n", dateTime, message));
 			writer.flush();
 		} catch (IOException e) {
 			throw new RuntimeException(e);

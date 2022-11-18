@@ -6,6 +6,7 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 
 /**
  * Main class for the FileMigration application.
@@ -24,8 +25,8 @@ public class FileMigration {
 	 */
 	public static void main(String[] args) {
 		// Save default config if missing
-		if (new File("MigrationConfig.json").exists()) {
-			URL inputUrl = FileMigration.class.getResource("/MigrationConfig.json");
+		if (!new File("MigrationConfig.json").exists()) {
+			URL inputUrl = FileMigration.class.getResource(File.separator + "MigrationConfig.json");
 			File dest = new File("MigrationConfig.json");
 			try {
 				FileUtils.copyURLToFile(inputUrl, dest);
@@ -33,16 +34,29 @@ public class FileMigration {
 				Logger.getInstance().write("ERROR: Unable to save default migration config: " + e.getMessage());
 				throw new RuntimeException(e);
 			}
+			Logger.getInstance().write("A default configuration file has been created. " +
+						"Please configure this application before running again!");
+			return;
 		}
 		
 		ObjectMapper mapper = new ObjectMapper();
+		MigrationConfig config;
 		// Load Migration Configuration
 		try {
-			MigrationConfig config = mapper.readValue(new File("MigrationConfig.json"), MigrationConfig.class);
+			config = mapper.readValue(new File("MigrationConfig.json"), MigrationConfig.class);
 		} catch (IOException e) {
 			Logger.getInstance().write("ERROR: Unable to load migration config: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
+		
+		// Run migration jobs
+		Logger.getInstance().write("---- Beginning File Migration ----");
+		
+		Arrays.stream(config.getJobs())
+					.map(job -> new MigrationHandler(job))
+					.forEach(MigrationHandler::run);
+		
+		Logger.getInstance().write("---- File Migration Finished ----");
 		
 		// Add logger close hook for application shutdown
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {

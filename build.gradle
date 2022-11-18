@@ -21,14 +21,11 @@ dependencies {
 }
 
 jar {
-    doFirst {
-        manifest {
-            if (!configurations.compile.isEmpty()) {
-                attributes(
-                        'Class-Path': configurations.compile.collect { it.toURI().toString() }.join(' '),
-                        'Main-Class': 'com.akroll.filemigration.FileMigration')
-            }
-        }
+    manifest {
+        attributes(
+                'Class-Path': configurations.compileClasspath.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.akroll.filemigration.FileMigration'
+        )
     }
 }
 
