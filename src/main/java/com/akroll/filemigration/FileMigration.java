@@ -29,6 +29,11 @@ public class FileMigration {
 	private static boolean verbose = false;
 	
 	/**
+	 * Flag for test mode.
+	 */
+	private static boolean test = false;
+	
+	/**
 	 * Argument for custom configuration files.
 	 */
 	private static String config = "MigrationConfig.json";
@@ -46,6 +51,7 @@ public class FileMigration {
 	 * -h					--help						Displays application help.<p>
 	 * -r 				--recursive				Enable recursive file discovery and migration.<p>
 	 * -v 				--verbose					Enable verbose logging output.<p>
+	 * -t         --test						Disable file removal and migration for testing configurations.<p>
 	 * -c [file]	--config [file]		Use the specified config file. Defaults to MigrationConfig.json.<p>
 	 * -l [file]  --log [file]      Use the specified log file. Defaults to Migration.log.
 	 *
@@ -57,16 +63,31 @@ public class FileMigration {
 			String arg = args[i];
 			if (arg.matches("-\\w*h\\w*") || arg.equalsIgnoreCase("--help")) {
 				Logger.getInstance().write("""
-											File Migration
-													Author: Andrew Kroll
-													Created: 2022-11-18
-													
-											Command Line Arguments:
-													-h					--help						Displays this help prompt.
-													-r					--recursive				Enables recursive file discovery and migration.
-													-v					--verbose					Enables verbose logging output.
-													-c [file]		--config [file]		Uses the specified config file. Defaults to MigrationConfig.json.
-													-l [file]   --log [file]			Uses the specified log file. Defaults to Migration.log.
+									
+							  ______ _ _      __  __ _                 _   _            \s
+							 |  ____(_) |    |  \\/  (_)               | | (_)           \s
+							 | |__   _| | ___| \\  / |_  __ _ _ __ __ _| |_ _  ___  _ __ \s
+							 |  __| | | |/ _ \\ |\\/| | |/ _` | '__/ _` | __| |/ _ \\| '_ \\\s
+							 | |    | | |  __/ |  | | | (_| | | | (_| | |_| | (_) | | | |
+							 |_|    |_|_|\\___|_|  |_|_|\\__, |_|  \\__,_|\\__|_|\\___/|_| |_|
+							                            __/ |                           \s
+							                           |___/                            \s
+							Author: Andrew Kroll
+							Created: 2022-11-18
+							https://github.com/HikariDev/FileMigration
+								
+							Command Line Arguments:
+								-h			--help				Displays this help prompt.
+								-r			--recursive			Enables recursive file discovery and migration.
+								-v			--verbose			Enables verbose logging output.
+								-t 			--test				Disables file removal and migration for testing configurations.
+								-c [file]	--config [file]		Uses the specified config file. Defaults to MigrationConfig.json.
+								-l [file]	--log [file]		Uses the specified log file. Defaults to Migration.log.
+								
+							 Example Commands:
+							 	java -jar FileMigration.jar -rvt
+							  	java -jar FileMigration.jar -vl /var/log/migration.log
+							 	java -jar FileMigration.jar -rtc C:\\test\\migration-config.json
 							""");
 			}
 			if (arg.matches("-\\w*r\\w*") || arg.equalsIgnoreCase("--recursive")) {
@@ -74,6 +95,9 @@ public class FileMigration {
 			}
 			if (arg.matches("-\\w*v\\w") || arg.equalsIgnoreCase("--verbose")) {
 				verbose = true;
+			}
+			if (arg.matches("-\\w*t\\w*") || arg.equalsIgnoreCase("--test")) {
+				test = true;
 			}
 			if (arg.matches("-\\w*c\\w") || arg.equalsIgnoreCase("--config")) {
 				if (i < args.length - 1) {
@@ -155,6 +179,15 @@ public class FileMigration {
 	 */
 	public static boolean isVerbose() {
 		return verbose;
+	}
+	
+	/**
+	 * Returns the status of test mode set by the -t flag.
+	 *
+	 * @return true if test, otherwise false
+	 */
+	public static boolean isTest() {
+		return test;
 	}
 	
 	/**

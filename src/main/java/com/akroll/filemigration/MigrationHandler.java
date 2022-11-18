@@ -159,17 +159,23 @@ public class MigrationHandler {
 			if (FileMigration.isVerbose()) {
 				Logger.getInstance().write(String.format("Removing existing file: %s", destination));
 			}
-			destination.delete();
+			if (!FileMigration.isTest()) {
+				destination.delete();
+			}
 		}
 		else {
 			if (!destination.getParentFile().exists()) {
 				if (FileMigration.isVerbose()) {
 					Logger.getInstance().write("Creating destination folders: " + destination.getParentFile().getAbsolutePath());
 				}
-				destination.getParentFile().mkdirs();
+				if (!FileMigration.isTest()) {
+					destination.getParentFile().mkdirs();
+				}
 			}
 		}
 		Logger.getInstance().write(String.format("Migrating: %s -> %s", file.getAbsolutePath(), destination));
-		file.renameTo(destination);
+		if (!FileMigration.isTest()) {
+			file.renameTo(destination);
+		}
 	}
 }
