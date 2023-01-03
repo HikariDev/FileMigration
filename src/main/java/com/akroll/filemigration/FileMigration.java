@@ -89,17 +89,18 @@ public class FileMigration {
 							  	java -jar FileMigration.jar -vl /var/log/migration.log
 							 	java -jar FileMigration.jar -rtc C:\\test\\migration-config.json
 							""");
+				return;
 			}
 			if (arg.matches("-\\w*r\\w*") || arg.equalsIgnoreCase("--recursive")) {
 				recursive = true;
 			}
-			if (arg.matches("-\\w*v\\w") || arg.equalsIgnoreCase("--verbose")) {
+			if (arg.matches("-\\w*v\\w*") || arg.equalsIgnoreCase("--verbose")) {
 				verbose = true;
 			}
 			if (arg.matches("-\\w*t\\w*") || arg.equalsIgnoreCase("--test")) {
 				test = true;
 			}
-			if (arg.matches("-\\w*c\\w") || arg.equalsIgnoreCase("--config")) {
+			if (arg.matches("-\\w*c\\w*") || arg.equalsIgnoreCase("--config")) {
 				if (i < args.length - 1) {
 					config = args[i + 1];
 				}
